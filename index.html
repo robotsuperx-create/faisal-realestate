@@ -85,7 +85,7 @@
     <div class="gold-underline"></div>
     <p class="section-subtitle" id="properties-subtitle"></p>
     <div class="property-grid" id="property-container">
-      <div class="loading-spinner" id="props-loader">جارٍ تحميل العقارات</div>
+      <div class="loading-spinner">جارٍ تحميل العقارات</div>
     </div>
   </section>
 
@@ -131,6 +131,9 @@
     let propertiesList = [];
     let currentLang = localStorage.getItem('lang') || 'ar';
 
+    const GITHUB_REPO = "robotsuperx-create/faisal-realestate";
+    const GITHUB_BRANCH = "main";
+
     document.getElementById('lang-toggle').addEventListener('click', () => {
       currentLang = currentLang === 'ar' ? 'en' : 'ar';
       localStorage.setItem('lang', currentLang);
@@ -139,18 +142,54 @@
 
     async function fetchAllData() {
       try {
+        // جلب إعدادات الموقع
         const settingsRes = await fetch('/content/settings.json');
         if (settingsRes.ok) siteData = await settingsRes.json();
 
-        // ✅ جلب العقارات تلقائياً من Netlify Function — بدون list.json
-        const propsRes = await fetch('/.netlify/functions/get-properties');
-        if (propsRes.ok) {
-          propertiesList = await propsRes.json();
-        }
+        // جلب العقارات مباشرة من GitHub بدون Netlify Function
+        await fetchPropertiesFromGithub();
       } catch (error) {
-        console.error('خطأ في جلب البيانات:', error);
+        console.error('خطأ:', error);
       }
       applyLanguage();
+    }
+
+    async function fetchPropertiesFromGithub() {
+      try {
+        // قائمة الملفات في مجلد properties
+        const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/properties?ref=${GITHUB_BRANCH}`;
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          console.warn('فشل جلب قائمة العقارات من GitHub');
+          return;
+        }
+
+        const files = await response.json();
+
+        // فلترة ملفات JSON فقط (بدون list.json)
+        const jsonFiles = files.filter(f =>
+          f.name.endsWith('.json') && f.name !== 'list.json'
+        );
+
+        // جلب محتوى كل عقار
+        propertiesList = [];
+        for (const file of jsonFiles) {
+          try {
+            const propertyRes = await fetch(file.download_url);
+            if (propertyRes.ok) {
+              const propertyData = await propertyRes.json();
+              propertiesList.push(propertyData);
+            }
+          } catch (err) {
+            console.warn('فشل تحميل عقار:', file.name);
+          }
+        }
+
+        console.log(`✅ تم تحميل ${propertiesList.length} عقار من GitHub`);
+      } catch (error) {
+        console.error('خطأ في جلب العقارات:', error);
+      }
     }
 
     function getLangData(obj, keyBase, lang) {
