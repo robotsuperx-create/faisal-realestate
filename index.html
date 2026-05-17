@@ -9,7 +9,7 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    /* التنسيقات الفاخرة المدمجة بالكامل لضمان عمل التصميم على السيرفر فوراً */
+    /* التنسيقات الفاخرة المدمجة بالكامل لضمان عمل التصميم فوراً */
     :root {
       --gold: #D4AF37;
       --dark-bg: #050505;
@@ -25,6 +25,7 @@
       line-height: 1.6;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     .section-padding {
@@ -131,6 +132,7 @@
       transition: all 0.3s;
       border-radius: 2px;
       cursor: pointer;
+      display: inline-block;
     }
 
     .btn-gold, .btn-card {
@@ -300,77 +302,76 @@
 <body>
 
   <nav class="luxury-nav" id="navbar">
-    <div class="logo" id="logo-text">فيصل للعقار</div>
+    <div class="logo" id="logo-text"></div>
     <ul class="nav-menu">
-      <li><a href="#" class="nav-link" data-i18n="home">الرئيسية</a></li>
-      <li><a href="#" class="nav-link" data-i18n="portfolio">المجموعة</a></li>
-      <li><a href="#" class="nav-link" data-i18n="about">من نحن</a></li>
-      <li><a href="#" class="nav-link" data-i18n="contact">اتصل بنا</a></li>
+      <li><a href="#hero" class="nav-link" data-i18n="home"></a></li>
+      <li><a href="#properties" class="nav-link" data-i18n="portfolio"></a></li>
+      <li><a href="#about" class="nav-link" data-i18n="about"></a></li>
+      <li><a href="#cta" class="nav-link" data-i18n="contact"></a></li>
     </ul>
     <button class="lang-switch" id="lang-toggle">EN</button>
   </nav>
 
-  <header class="hero">
+  <header class="hero" id="hero">
     <div class="hero-content">
-      <h1 class="hero-title" id="hero-title">فيصل للعقار</h1>
-      <p class="hero-subtitle" id="hero-subtitle">اكتشف الفخامة الحقيقية في تاوريرت</p>
+      <h1 class="hero-title" id="hero-title"></h1>
+      <p class="hero-subtitle" id="hero-subtitle"></p>
       <div class="hero-cta">
-        <a href="#" class="btn-gold" id="cta-primary">استكشف المجموعة</a>
-        <a href="#" class="btn-outline-gold" id="cta-secondary">جولة افتراضية</a>
+        <a href="#properties" class="btn-gold" id="cta-primary" data-i18n="cta-explore"></a>
+        <a href="#cta" class="btn-outline-gold" id="cta-secondary" data-i18n="cta-tour"></a>
       </div>
     </div>
   </header>
 
-  <section class="section-padding">
-    <h2 class="section-title" id="properties-heading">أبرز العقارات</h2>
+  <section class="section-padding" id="properties">
+    <h2 class="section-title" id="properties-heading"></h2>
     <div class="gold-underline"></div>
-    <p class="section-subtitle" id="properties-subtitle">مختارة بعناية للتميز</p>
+    <p class="section-subtitle" id="properties-subtitle"></p>
     <div class="property-grid" id="property-container"></div>
   </section>
 
-  <section class="section-padding" style="background: rgba(212, 175, 55, 0.02);">
+  <section class="section-padding" id="about" style="background: rgba(212, 175, 55, 0.02);">
     <div class="about-container">
       <div class="about-image"></div>
       <div class="about-text">
-        <h2 id="about-title">إرث من <span class="gold-highlight">التميز</span></h2>
-        <p id="about-snippet">فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية والتجارية في المنطقة الشرقية.</p>
-        <a href="#" class="btn-gold about-btn" data-i18n="discover-story">اكتشف قصتنا</a>
+        <h2 id="about-title"></h2>
+        <p id="about-snippet"></p>
+        <a href="#cta" class="btn-gold about-btn" id="about-btn" data-i18n="discover-story"></a>
       </div>
     </div>
   </section>
 
-  <section class="section-padding" style="background: #0a0a0a; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);">
+  <section class="section-padding" id="security" style="background: #0a0a0a; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;">أمان وموثوقية تعاملاتكم</h2>
-      <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;">نحن نضمن السرية التامة والاحترافية الكاملة في كافة مراحل بيع وشراء العقارات الفاخرة.</p>
+      <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;"></h2>
+      <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;"></p>
     </div>
   </section>
 
-  <section class="section-padding" style="background: rgba(212, 175, 55, 0.02);">
-    <h2 class="section-title" id="testimonials-heading">آراء العملاء</h2>
+  <section class="section-padding" id="testimonials" style="background: rgba(212, 175, 55, 0.02);">
+    <h2 class="section-title" id="testimonials-heading"></h2>
     <div class="gold-underline"></div>
-    <p class="section-subtitle" id="testimonials-subtitle">أصوات من ذوي المكانة</p>
+    <p class="section-subtitle" id="testimonials-subtitle"></p>
     <div class="testimonial-grid" id="testimonials-container"></div>
   </section>
 
-  <div class="cta-banner">
-    <h2 id="cta-title">هل أنت جاهز للخطوة القادمة؟</h2>
-    <p id="cta-subtitle">تواصل مع مستشارينا العقاريين اليوم</p>
-    <a href="#" class="btn-gold cta-btn" data-i18n="enquire-now">استفسر الآن</a>
+  <div class="cta-banner" id="cta">
+    <h2 id="cta-title"></h2>
+    <p id="cta-subtitle"></p>
+    <a href="mailto:contact@faisal.app" class="btn-gold cta-btn" id="cta-btn" data-i18n="enquire-now"></a>
   </div>
 
   <footer class="luxury-footer">
     <div class="footer-content">
-      <div class="footer-logo" id="footer-name">فيصل للعقار</div>
-      <p class="copyright" id="footer-address">تاوريرت، الجهة الشرقية</p>
-      <p class="copyright">©️ <span id="footer-year">2026</span> جميع الحقوق محفوظة.</p>
+      <div class="footer-logo" id="footer-name"></div>
+      <p class="copyright" id="footer-address"></p>
+      <p class="copyright">©️ <span id="footer-year">2026</span> <span id="footer-rights"></span></p>
     </div>
   </footer>
 
   <script>
     let siteData = null;
     let propertiesList = [];
-    let testimonialsList = [];
     let currentLang = localStorage.getItem('lang') || 'ar';
 
     document.getElementById('lang-toggle').addEventListener('click', () => {
@@ -381,14 +382,12 @@
 
     async function fetchAllData() {
       try {
-        const [settingsRes, propsListRes, testiListRes] = await Promise.all([
+        const [settingsRes, propsListRes] = await Promise.all([
           fetch('/content/settings.json'),
-          fetch('/content/properties/list.json'),
-          fetch('/content/testimonials/list.json')
+          fetch('/content/properties/list.json')
         ]);
         siteData = await settingsRes.json();
         const propSlugs = await propsListRes.json();
-        const testiSlugs = await testiListRes.json();
 
         propertiesList = [];
         for (let slug of propSlugs) {
@@ -399,17 +398,6 @@
               propertiesList.push(data);
             }
           } catch (err) { console.warn('فشل تحميل عقار:', slug, err); }
-        }
-
-        testimonialsList = [];
-        for (let slug of testiSlugs) {
-          try {
-            const res = await fetch(`/content/testimonials/${slug}.json`);
-            if (res.ok) {
-              const data = await res.json();
-              testimonialsList.push(data);
-            }
-          } catch (err) { console.warn('فشل تحميل شهادة:', slug, err); }
         }
 
         applyLanguage();
@@ -434,10 +422,8 @@
       if (siteData) {
         document.title = getLangData(siteData, 'siteName', lang) + ' | Luxury Real Estate';
         document.getElementById('logo-text').textContent = getLangData(siteData, 'siteName', lang);
-        document.getElementById('hero-title').innerHTML = getLangData(siteData, 'heroTitle', lang);
+        document.getElementById('hero-title').textContent = getLangData(siteData, 'siteName', lang);
         document.getElementById('hero-subtitle').textContent = getLangData(siteData, 'heroSubtitle', lang);
-        document.getElementById('cta-primary').textContent = getLangData(siteData, 'ctaPrimary', lang);
-        document.getElementById('cta-secondary').textContent = getLangData(siteData, 'ctaSecondary', lang);
         document.getElementById('about-snippet').textContent = getLangData(siteData, 'aboutSnippet', lang);
         document.getElementById('security-title').textContent = getLangData(siteData, 'securityTitle', lang);
         document.getElementById('security-text').textContent = getLangData(siteData, 'securityText', lang);
@@ -445,35 +431,59 @@
         document.getElementById('cta-subtitle').textContent = getLangData(siteData, 'ctaSubtitle', lang);
         document.getElementById('footer-name').textContent = getLangData(siteData, 'siteName', lang);
         document.getElementById('footer-year').textContent = siteData.year || '2026';
+        
         const city = getLangData(siteData, 'city', lang);
         const region = getLangData(siteData, 'region', lang);
         const postal = siteData.postalCode || '65800';
         document.getElementById('footer-address').textContent = `${city}، ${region} ${postal}`;
       } else {
+        // نصوص ثابتة آمنة ومترجمة 100% بدون أي تداخل
         if (isRTL) {
           document.getElementById('logo-text').textContent = "فيصل للعقار";
           document.getElementById('hero-title').textContent = "فيصل للعقار";
           document.getElementById('hero-subtitle').textContent = "اكتشف الفخامة الحقيقية في تاوريرت";
+          document.getElementById('about-title').innerHTML = `إرث من <span class="gold-highlight">التميز</span>`;
+          document.getElementById('about-snippet').textContent = "فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية والتجارية في المنطقة الشرقية.";
+          document.getElementById('security-title').textContent = "أمان وموثوقية تعاملاتكم";
+          document.getElementById('security-text').textContent = "نحن نضمن السرية التامة والاحترافية الكاملة في كافة مراحل بيع وشراء العقارات الفاخرة.";
+          document.getElementById('cta-title').textContent = "هل أنت جاهز للخطوة القادمة؟";
+          document.getElementById('cta-subtitle').textContent = "تواصل مع مستشارينا العقاريين اليوم";
           document.getElementById('footer-name').textContent = "فيصل للعقار";
+          document.getElementById('footer-address').textContent = "تاوريرت، الجهة الشرقية";
+          document.getElementById('footer-rights').textContent = "جميع الحقوق محفوظة.";
         } else {
           document.getElementById('logo-text').textContent = "FAISAL PROPERTIES";
-          document.getElementById('hero-title').textContent = "Exclusive Royal Residences";
-          document.getElementById('hero-subtitle').textContent = "Curated luxury properties in Taourirt and the Oriental region.";
+          document.getElementById('hero-title').textContent = "FAISAL PROPERTIES";
+          document.getElementById('hero-subtitle').textContent = "Discover True Luxury in Taourirt";
+          document.getElementById('about-title').innerHTML = `A Legacy of <span class="gold-highlight">Excellence</span>`;
+          document.getElementById('about-snippet').textContent = "Faisal Properties is not just a brand - it's a statement of refined taste. We offer the finest residential and commercial addresses in the Oriental region.";
+          document.getElementById('security-title').textContent = "Secure & Trusted Transactions";
+          document.getElementById('security-text').textContent = "We guarantee absolute confidentiality and full professionalism throughout every stage of buying or selling luxury estates.";
+          document.getElementById('cta-title').textContent = "Ready for the Next Step?";
+          document.getElementById('cta-subtitle').textContent = "Contact our luxury estate consultants today.";
           document.getElementById('footer-name').textContent = "FAISAL PROPERTIES";
+          document.getElementById('footer-address').textContent = "Taourirt, Oriental Region";
+          document.getElementById('footer-rights').textContent = "All rights reserved.";
         }
       }
 
-      document.getElementById('properties-heading').textContent = lang === 'ar' ? 'أبرز العقارات' : 'Signature Residences';
-      document.getElementById('properties-subtitle').textContent = lang === 'ar' ? 'مختارة بعناية للتميز' : 'Handpicked for Excellence';
-      document.getElementById('testimonials-heading').textContent = lang === 'ar' ? 'آراء العملاء' : 'Esteemed Clientele';
-      document.getElementById('testimonials-subtitle').textContent = lang === 'ar' ? 'أصوات من ذوي المكانة' : 'Voices of Distinction';
+      // عناوين الأقسام الثابتة
+      document.getElementById('properties-heading').textContent = isRTL ? 'أبرز العقارات' : 'Signature Residences';
+      document.getElementById('properties-subtitle').textContent = isRTL ? 'مختارة بعناية للتميز' : 'Handpicked for Excellence';
+      document.getElementById('testimonials-heading').textContent = isRTL ? 'آراء العملاء' : 'Esteemed Clientele';
+      document.getElementById('testimonials-subtitle').textContent = isRTL ? 'أصوات من ذوي المكانة' : 'Voices of Distinction';
 
+      // ترجمة روابط الـ Navbar والـ CTAs
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (key === 'home') el.textContent = lang === 'ar' ? 'الرئيسية' : 'Home';
-        else if (key === 'portfolio') el.textContent = lang === 'ar' ? 'المجموعة' : 'Portfolio';
-        else if (key === 'about') el.textContent = lang === 'ar' ? 'من نحن' : 'About';
-        else if (key === 'contact') el.textContent = lang === 'ar' ? 'اتصل بنا' : 'Contact';
+        if (key === 'home') el.textContent = isRTL ? 'الرئيسية' : 'Home';
+        else if (key === 'portfolio') el.textContent = isRTL ? 'المجموعة' : 'Portfolio';
+        else if (key === 'about') el.textContent = isRTL ? 'من نحن' : 'About';
+        else if (key === 'contact') el.textContent = isRTL ? 'اتصل بنا' : 'Contact';
+        else if (key === 'cta-explore') el.textContent = isRTL ? 'استكشف المجموعة' : 'Explore Collection';
+        else if (key === 'cta-tour') el.textContent = isRTL ? 'جولة افتراضية' : 'Virtual Tour';
+        else if (key === 'discover-story') el.textContent = isRTL ? 'اكتشف قصتنا' : 'Our Story';
+        else if (key === 'enquire-now') el.textContent = isRTL ? 'استفسر الآن' : 'Enquire Now';
       });
 
       renderProperties(lang);
@@ -487,31 +497,31 @@
 
       if (propertiesList.length === 0) {
         const sampleProps = [
-          { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price: "2,400,000 درهم", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "3,440 sqft", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
-          { title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa", location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District", price: "3,100,000 درهم", beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "3,010 sqft", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" }
+          { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price_ar: "2,400,000 درهم", price_en: "2,400,000 MAD", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "320 sqm", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
+          { title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa", location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District", price_ar: "3,100,000 درهم", price_en: "3,100,000 MAD", beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "280 sqm", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" }
         ];
         sampleProps.forEach(p => appendCard(container, p, lang));
         return;
       }
-
       propertiesList.forEach(p => appendCard(container, p, lang));
     }
 
     function appendCard(container, p, lang) {
+      const isAr = lang === 'ar';
       const card = document.createElement('div');
       card.className = 'property-card';
       card.innerHTML = `
-        <img src="${p.image || 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80'}" alt="${getLangData(p, 'title', lang)}" class="property-image">
+        <img src="${p.image || 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80'}" alt="${isAr ? p.title_ar : p.title_en}" class="property-image">
         <div class="property-details">
-          <h3>${getLangData(p, 'title', lang) || (lang === 'ar' ? p.title_ar : p.title_en)}</h3>
-          <div class="property-location">📍 ${getLangData(p, 'location', lang) || (lang === 'ar' ? p.location_ar : p.location_en)}</div>
-          <div class="property-price">${p.price || ''}</div>
+          <h3>${isAr ? p.title_ar : p.title_en}</h3>
+          <div class="property-location">📍 ${isAr ? p.location_ar : p.location_en}</div>
+          <div class="property-price">${isAr ? p.price_ar : p.price_en}</div>
           <div class="property-specs">
-            <span>🛏 ${p.beds || 0} ${lang === 'ar' ? 'غرف' : 'Beds'}</span>
-            <span>🛁 ${p.baths || 0} ${lang === 'ar' ? 'حمامات' : 'Baths'}</span>
-            <span>📐 ${getLangData(p, 'sqft', lang) || (lang === 'ar' ? p.sqft_ar : p.sqft_en)}</span>
+            <span>🛏 ${p.beds || 0} ${isAr ? 'غرف' : 'Beds'}</span>
+            <span>🛁 ${p.baths || 0} ${isAr ? 'حمامات' : 'Baths'}</span>
+            <span>📐 ${isAr ? p.sqft_ar : p.sqft_en}</span>
           </div>
-          <a href="#" class="btn-card" style="margin-top: 1rem; display: inline-block;">${lang === 'ar' ? 'عرض العقار' : 'View Property'}</a>
+          <a href="#cta" class="btn-card" style="margin-top: 1rem; display: inline-block;">${isAr ? 'عرض العقار' : 'View Property'}</a>
         </div>
       `;
       container.appendChild(card);
@@ -522,48 +532,23 @@
       if (!container) return;
       container.innerHTML = '';
 
-      if (testimonialsList.length === 0) {
-        const sampleTestis = [
-          { quote_ar: "تعامل احترافي للغاية ومصداقية تامة في المواعيد المعاملة كانت ممتازة.", quote_en: "Absolute transparency and elite service. Highly recommended for premium acquisitions.", author_ar: "الحاج محمد بنعلي", author_en: "M. Benali", role_ar: "مستثمر عقاري", role_en: "Property Investor" }
-        ];
-        sampleTestis.forEach(t => {
-          const div = document.createElement('div');
-          div.className = 'testimonial-card';
-          div.innerHTML = `
-            <p class="testimonial-text">“${lang === 'ar' ? t.quote_ar : t.quote_en}”</p>
-            <div class="testimonial-author">${lang === 'ar' ? t.author_ar : t.author_en}</div>
-            <div class="testimonial-role">${lang === 'ar' ? t.role_ar : t.role_en}</div>
-          `;
-          container.appendChild(div);
-        });
-        return;
-      }
+      const sampleTestis = [
+        { quote_ar: "تعامل احترافي للغاية ومصداقية تامة في المواعيد. المعاملة كانت ممتازة.", quote_en: "Absolute transparency and elite service. Highly recommended for premium acquisitions.", author_ar: "الحاج محمد بنعلي", author_en: "M. Benali", role_ar: "مستثمر عقاري", role_en: "Property Investor" }
+      ];
 
-      testimonialsList.forEach(t => {
+      sampleTestis.forEach(t => {
         const div = document.createElement('div');
         div.className = 'testimonial-card';
         div.innerHTML = `
-          <p class="testimonial-text">“${getLangData(t, 'quote', lang)}”</p>
-          <div class="testimonial-author">${getLangData(t, 'author', lang)}</div>
-          <div class="testimonial-role">${getLangData(t, 'role', lang)}</div>
+          <p class="testimonial-text">“${lang === 'ar' ? t.quote_ar : t.quote_en}”</p>
+          <div class="testimonial-author">${lang === 'ar' ? t.author_ar : t.author_en}</div>
+          <div class="testimonial-role">${lang === 'ar' ? t.role_ar : t.role_en}</div>
         `;
         container.appendChild(div);
       });
     }
 
     fetchAllData();
-  </script>
-
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
   </script>
 </body>
 </html>
