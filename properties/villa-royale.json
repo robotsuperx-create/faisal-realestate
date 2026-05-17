@@ -1,0 +1,14 @@
+{
+  "title_ar": "فيلا رويال",
+  "title_en": "Royal Villa",
+  "location_ar": "تاوريرت، الجهة الشرقية",
+  "location_en": "Taourirt, Oriental",
+  "price": "2,500,000 درهم",
+  "beds": 5,
+  "baths": 4,
+  "sqft_ar": "350 م²",
+  "sqft_en": "350 sqm",
+  "image": "/assets/images/villa-royale.jpg",
+  "description_ar": "فيلا عصرية بإطلالة رائعة على جبال الأطلس، تجمع بين التصميم المغربي الأصيل والراحة العصرية.",
+  "description_en": "Modern villa with stunning views of the Atlas Mountains, combining authentic Moroccan design with modern comfort."
+}
