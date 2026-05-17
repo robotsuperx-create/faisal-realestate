@@ -4,42 +4,296 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فيصل للعقار | عقارات فاخرة في تاوريرت</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
+    /* التنسيقات الفاخرة المدمجة بالكامل لضمان عمل التصميم على السيرفر فوراً */
+    :root {
+      --gold: #D4AF37;
+      --dark-bg: #050505;
+      --card-bg: #0a0a0a;
+      --text: #ffffff;
+      --text-muted: #ccc;
+    }
+
     body {
-      background-color: #050505;
-      color: #ffffff;
+      background-color: var(--dark-bg);
+      color: var(--text);
       font-family: 'Poppins', 'Segoe UI', sans-serif;
       line-height: 1.6;
+      margin: 0;
+      padding: 0;
     }
-    [dir="rtl"] .nav-menu {
-      flex-direction: row-reverse;
+
+    .section-padding {
+      padding: 5rem 10%;
     }
-    [dir="ltr"] .nav-menu {
-      flex-direction: row;
+
+    /* Navbar */
+    .luxury-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 10%;
+      background: rgba(5, 5, 5, 0.95);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    [dir="rtl"] .nav-menu { flex-direction: row-reverse; }
+    [dir="ltr"] .nav-menu { flex-direction: row; }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--gold);
+    }
+
     .lang-switch {
       background: transparent;
-      border: 1px solid #D4AF37;
-      color: #D4AF37;
+      border: 1px solid var(--gold);
+      color: var(--gold);
       padding: 0.4rem 1rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s;
       border-radius: 3px;
-      margin-left: 1rem;
       font-size: 0.9rem;
     }
+
     .lang-switch:hover {
-      background: #D4AF37;
-      color: #050505;
+      background: var(--gold);
+      color: var(--dark-bg);
     }
+
+    /* Hero */
+    .hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(5,5,5,0.7), rgba(5,5,5,0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding: 0 1rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .btn-gold, .btn-outline-gold, .btn-card {
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .btn-gold, .btn-card {
+      background: var(--gold);
+      color: var(--dark-bg);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-gold:hover, .btn-card:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--dark-bg);
+    }
+
+    /* Headings */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gold-underline {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
     .gold-highlight {
-      color: #D4AF37;
+      color: var(--gold);
+    }
+
+    /* Grid layout */
+    .property-grid, .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    /* Cards */
+    .property-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: transform 0.3s, border-color 0.3s;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .property-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .property-details {
+      padding: 1.5rem;
+    }
+
+    .property-details h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.4rem;
+    }
+
+    .property-location {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .property-price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0.8rem 0;
+    }
+
+    .property-specs {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* About Section */
+    .about-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 350px;
+      background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80') center/cover;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    /* Testimonial Card */
+    .testimonial-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.85)), url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1920&q=80') center/cover;
+      text-align: center;
+      padding: 4rem 1rem;
+      border-top: 1px solid var(--gold);
+    }
+
+    /* Footer */
+    .luxury-footer {
+      background: #020202;
+      padding: 3rem 10%;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.05);
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
   </style>
 </head>
@@ -85,7 +339,7 @@
     </div>
   </section>
 
-  <section class="section-padding" style="background: #0a0a0a; border-top: 1px solid #D4AF37; border-bottom: 1px solid #D4AF37;">
+  <section class="section-padding" style="background: #0a0a0a; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
       <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;">أمان وموثوقية تعاملاتكم</h2>
       <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;">نحن نضمن السرية التامة والاحترافية الكاملة في كافة مراحل بيع وشراء العقارات الفاخرة.</p>
@@ -160,7 +414,7 @@
 
         applyLanguage();
       } catch (error) {
-        console.error('خطأ في جلب البيانات، سيتم عرض البنية الأساسية:', error);
+        console.error('خطأ جلب البيانات، تشغيل الوضع الثابت المباشر:', error);
         applyLanguage();
       }
     }
@@ -177,7 +431,6 @@
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
       document.getElementById('lang-toggle').textContent = isRTL ? 'EN' : 'عربي';
 
-      // إذا نجح جلب البيانات من الـ CMS نقوم بتطبيقها، وإلا نترك النصوص الافتراضية الفاخرة تعمل
       if (siteData) {
         document.title = getLangData(siteData, 'siteName', lang) + ' | Luxury Real Estate';
         document.getElementById('logo-text').textContent = getLangData(siteData, 'siteName', lang);
@@ -197,7 +450,6 @@
         const postal = siteData.postalCode || '65800';
         document.getElementById('footer-address').textContent = `${city}، ${region} ${postal}`;
       } else {
-        // نصوص ثابتة احترافية في حال عدم وجود داتا json بعد
         if (isRTL) {
           document.getElementById('logo-text').textContent = "فيصل للعقار";
           document.getElementById('hero-title').textContent = "فيصل للعقار";
@@ -222,8 +474,6 @@
         else if (key === 'portfolio') el.textContent = lang === 'ar' ? 'المجموعة' : 'Portfolio';
         else if (key === 'about') el.textContent = lang === 'ar' ? 'من نحن' : 'About';
         else if (key === 'contact') el.textContent = lang === 'ar' ? 'اتصل بنا' : 'Contact';
-        else if (key === 'discover-story') el.textContent = lang === 'ar' ? 'اكتشف قصتنا' : 'Discover Our Story';
-        else if (key === 'enquire-now') el.textContent = lang === 'ar' ? 'استفسر الآن' : 'Enquire Now';
       });
 
       renderProperties(lang);
@@ -235,7 +485,6 @@
       if (!container) return;
       container.innerHTML = '';
 
-      // إذا كانت اللوحة فارغة ولم ترفع عقارات بعد، يعرض نماذج فاخرة تلقائياً لمنع ظهور الصفحة فارغة أمام العميل
       if (propertiesList.length === 0) {
         const sampleProps = [
           { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price: "2,400,000 درهم", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "3,440 sqft", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
@@ -256,7 +505,7 @@
         <div class="property-details">
           <h3>${getLangData(p, 'title', lang) || (lang === 'ar' ? p.title_ar : p.title_en)}</h3>
           <div class="property-location">📍 ${getLangData(p, 'location', lang) || (lang === 'ar' ? p.location_ar : p.location_en)}</div>
-          <div class="property-price" style="color: #D4AF37; font-weight: bold; margin: 0.5rem 0;">${p.price || ''}</div>
+          <div class="property-price">${p.price || ''}</div>
           <div class="property-specs">
             <span>🛏 ${p.beds || 0} ${lang === 'ar' ? 'غرف' : 'Beds'}</span>
             <span>🛁 ${p.baths || 0} ${lang === 'ar' ? 'حمامات' : 'Baths'}</span>
