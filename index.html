@@ -6,293 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فيصل للعقار | عقارات فاخرة في تاوريرت</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
   <style>
-    :root {
-      --gold: #D4AF37;
-      --dark-bg: #050505;
-      --card-bg: #0a0a0a;
-      --text: #ffffff;
-      --text-muted: #ccc;
-    }
-
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text);
-      font-family: 'Poppins', 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-
+    :root { --gold: #D4AF37; --dark-bg: #050505; --card-bg: #0a0a0a; --text: #ffffff; --text-muted: #ccc; }
+    body { background-color: var(--dark-bg); color: var(--text); font-family: 'Poppins', 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; padding: 0; scroll-behavior: smooth; }
     .section-padding { padding: 5rem 10%; }
-
-    .luxury-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 10%;
-      background: rgba(5, 5, 5, 0.95);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
+    .luxury-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 10%; background: rgba(5,5,5,0.95); border-bottom: 1px solid rgba(212,175,55,0.1); position: sticky; top: 0; z-index: 1000; }
+    .logo { font-size: 1.8rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+    .nav-menu { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0; }
     [dir="rtl"] .nav-menu { flex-direction: row-reverse; }
     [dir="ltr"] .nav-menu { flex-direction: row; }
-
-    .nav-link {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 400;
-      transition: color 0.3s;
-    }
-
+    .nav-link { color: var(--text); text-decoration: none; font-weight: 400; transition: color 0.3s; }
     .nav-link:hover { color: var(--gold); }
-
-    .lang-switch {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.4rem 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-
-    .lang-switch:hover {
-      background: var(--gold);
-      color: var(--dark-bg);
-    }
-
-    .hero {
-      height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(rgba(5,5,5,0.7), rgba(5,5,5,0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover;
-      padding: 0 1rem;
-    }
-
+    .lang-switch { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.4rem 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; border-radius: 3px; font-size: 0.9rem; }
+    .lang-switch:hover { background: var(--gold); color: var(--dark-bg); }
+    .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(5,5,5,0.7), rgba(5,5,5,0.9)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover; padding: 0 1rem; }
     .hero-content { max-width: 800px; }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .btn-gold, .btn-outline-gold, .btn-card {
-      padding: 0.8rem 2rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      border-radius: 2px;
-      cursor: pointer;
-      display: inline-block;
-    }
-
-    .btn-gold, .btn-card {
-      background: var(--gold);
-      color: var(--dark-bg);
-      border: 1px solid var(--gold);
-    }
-
-    .btn-gold:hover, .btn-card:hover {
-      background: transparent;
-      color: var(--gold);
-    }
-
-    .btn-outline-gold {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-    }
-
-    .btn-outline-gold:hover {
-      background: var(--gold);
-      color: var(--dark-bg);
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .gold-underline {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 1.5rem auto;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      margin-bottom: 3rem;
-    }
-
+    .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 2px; }
+    .hero-subtitle { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .hero-cta { display: flex; gap: 1.5rem; justify-content: center; }
+    .btn-gold, .btn-outline-gold, .btn-card { padding: 0.8rem 2rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border-radius: 2px; cursor: pointer; display: inline-block; }
+    .btn-gold, .btn-card { background: var(--gold); color: var(--dark-bg); border: 1px solid var(--gold); }
+    .btn-gold:hover, .btn-card:hover { background: transparent; color: var(--gold); }
+    .btn-outline-gold { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--dark-bg); }
+    .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .gold-underline { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem auto; }
+    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3rem; }
     .gold-highlight { color: var(--gold); }
-
-    .property-grid, .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .property-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      transition: transform 0.3s, border-color 0.3s;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .property-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-    }
-
-    .property-image {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-    }
-
+    .property-grid, .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+    .property-card { background: var(--card-bg); border: 1px solid rgba(212,175,55,0.1); transition: transform 0.3s, border-color 0.3s; border-radius: 4px; overflow: hidden; }
+    .property-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .property-image { width: 100%; height: 240px; object-fit: cover; }
     .property-details { padding: 1.5rem; }
-
-    .property-details h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.4rem;
-    }
-
-    .property-location {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .property-price {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin: 0.8rem 0;
-    }
-
-    .property-specs {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 0.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-image {
-      width: 100%;
-      height: 350px;
-      background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80') center/cover;
-      border-radius: 4px;
-      border: 1px solid rgba(212, 175, 55, 0.1);
-    }
-
-    .testimonial-card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-    }
-
-    .testimonial-text {
-      font-style: italic;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      color: var(--gold);
-    }
-
-    .testimonial-role {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .cta-banner {
-      background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.85)), url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1920&q=80') center/cover;
-      text-align: center;
-      padding: 4rem 1rem;
-      border-top: 1px solid var(--gold);
-    }
-
-    .luxury-footer {
-      background: #020202;
-      padding: 3rem 10%;
-      text-align: center;
-      border-top: 1px solid rgba(212, 175, 55, 0.05);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    /* Loading spinner */
-    .loading-spinner {
-      text-align: center;
-      padding: 2rem;
-      color: var(--gold);
-      font-size: 1rem;
-      opacity: 0.7;
-    }
+    .property-details h3 { margin: 0 0 0.5rem 0; font-size: 1.4rem; }
+    .property-location { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .property-price { color: var(--gold); font-weight: 700; font-size: 1.2rem; margin: 0.8rem 0; }
+    .property-specs { display: flex; gap: 1.5rem; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; margin-bottom: 1rem; }
+    .about-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center; }
+    .about-image { width: 100%; height: 350px; background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80') center/cover; border-radius: 4px; border: 1px solid rgba(212,175,55,0.1); }
+    .testimonial-card { background: var(--card-bg); padding: 2rem; border-left: 3px solid var(--gold); border-radius: 4px; }
+    .testimonial-text { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; }
+    .testimonial-author { font-weight: 600; color: var(--gold); }
+    .testimonial-role { font-size: 0.85rem; color: var(--text-muted); }
+    .cta-banner { background: linear-gradient(rgba(5,5,5,0.85), rgba(5,5,5,0.85)), url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1920&q=80') center/cover; text-align: center; padding: 4rem 1rem; border-top: 1px solid var(--gold); }
+    .luxury-footer { background: #020202; padding: 3rem 10%; text-align: center; border-top: 1px solid rgba(212,175,55,0.05); font-size: 0.9rem; color: var(--text-muted); }
+    .loading-spinner { text-align: center; padding: 3rem; color: var(--gold); font-size: 1rem; grid-column: 1/-1; }
+    .loading-spinner::after { content: ''; display: block; width: 40px; height: 40px; border: 2px solid rgba(212,175,55,0.2); border-top-color: var(--gold); border-radius: 50%; margin: 1rem auto 0; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
-
 </head>
 <body>
 
-  <nav class="luxury-nav" id="navbar">
+  <nav class="luxury-nav">
     <div class="logo" id="logo-text"></div>
     <ul class="nav-menu">
       <li><a href="#hero" class="nav-link" data-i18n="home"></a></li>
@@ -308,8 +74,8 @@
       <h1 class="hero-title" id="hero-title"></h1>
       <p class="hero-subtitle" id="hero-subtitle"></p>
       <div class="hero-cta">
-        <a href="#properties" class="btn-gold" id="cta-primary" data-i18n="cta-explore"></a>
-        <a href="#cta" class="btn-outline-gold" id="cta-secondary" data-i18n="cta-tour"></a>
+        <a href="#properties" class="btn-gold" data-i18n="cta-explore"></a>
+        <a href="#cta" class="btn-outline-gold" data-i18n="cta-tour"></a>
       </div>
     </div>
   </header>
@@ -319,29 +85,29 @@
     <div class="gold-underline"></div>
     <p class="section-subtitle" id="properties-subtitle"></p>
     <div class="property-grid" id="property-container">
-      <div class="loading-spinner" id="props-loader">جارٍ التحميل...</div>
+      <div class="loading-spinner" id="props-loader">جارٍ تحميل العقارات</div>
     </div>
   </section>
 
-  <section class="section-padding" id="about" style="background: rgba(212, 175, 55, 0.02);">
+  <section class="section-padding" id="about" style="background: rgba(212,175,55,0.02);">
     <div class="about-container">
       <div class="about-image"></div>
       <div class="about-text">
         <h2 id="about-title"></h2>
         <p id="about-snippet"></p>
-        <a href="#cta" class="btn-gold about-btn" id="about-btn" data-i18n="discover-story"></a>
+        <a href="#cta" class="btn-gold" data-i18n="discover-story"></a>
       </div>
     </div>
   </section>
 
-  <section class="section-padding" id="security" style="background: #0a0a0a; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);">
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;"></h2>
-      <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;"></p>
+  <section class="section-padding" id="security" style="background:#0a0a0a; border-top:1px solid var(--gold); border-bottom:1px solid var(--gold);">
+    <div style="max-width:800px; margin:0 auto; text-align:center;">
+      <h2 class="gold-highlight" id="security-title" style="font-size:2rem;"></h2>
+      <p id="security-text" style="color:#ccc; margin-top:1.5rem; font-size:1.1rem;"></p>
     </div>
   </section>
 
-  <section class="section-padding" id="testimonials" style="background: rgba(212, 175, 55, 0.02);">
+  <section class="section-padding" id="testimonials" style="background: rgba(212,175,55,0.02);">
     <h2 class="section-title" id="testimonials-heading"></h2>
     <div class="gold-underline"></div>
     <p class="section-subtitle" id="testimonials-subtitle"></p>
@@ -351,15 +117,13 @@
   <div class="cta-banner" id="cta">
     <h2 id="cta-title"></h2>
     <p id="cta-subtitle"></p>
-    <a href="mailto:contact@faisal.app" class="btn-gold cta-btn" id="cta-btn" data-i18n="enquire-now"></a>
+    <a href="mailto:contact@faisal.app" class="btn-gold" data-i18n="enquire-now"></a>
   </div>
 
   <footer class="luxury-footer">
-    <div class="footer-content">
-      <div class="footer-logo" id="footer-name"></div>
-      <p class="copyright" id="footer-address"></p>
-      <p class="copyright">©️ <span id="footer-year">2026</span> <span id="footer-rights"></span></p>
-    </div>
+    <div class="footer-logo" id="footer-name"></div>
+    <p id="footer-address"></p>
+    <p>©️ <span id="footer-year">2026</span> <span id="footer-rights"></span></p>
   </footer>
 
   <script>
@@ -375,39 +139,18 @@
 
     async function fetchAllData() {
       try {
-        // 1. جلب إعدادات الموقع
         const settingsRes = await fetch('/content/settings.json');
-        if (settingsRes.ok) {
-          siteData = await settingsRes.json();
-        }
+        if (settingsRes.ok) siteData = await settingsRes.json();
 
-        // 2. جلب قائمة العقارات من list.json تلقائياً
-        propertiesList = [];
-        try {
-          const listRes = await fetch('/content/properties/list.json');
-          if (listRes.ok) {
-            const slugs = await listRes.json(); // مصفوفة أسماء مثل ["villa-royale", "horizon-estate"]
-            for (let slug of slugs) {
-              try {
-                const res = await fetch(`/content/properties/${slug}.json`);
-                if (res.ok) {
-                  const data = await res.json();
-                  propertiesList.push(data);
-                }
-              } catch (err) {
-                console.warn('فشل تحميل عقار:', slug, err);
-              }
-            }
-          }
-        } catch (listErr) {
-          console.warn('فشل تحميل list.json:', listErr);
+        // ✅ جلب العقارات تلقائياً من Netlify Function — بدون list.json
+        const propsRes = await fetch('/.netlify/functions/get-properties');
+        if (propsRes.ok) {
+          propertiesList = await propsRes.json();
         }
-
-        applyLanguage();
       } catch (error) {
-        console.error('خطأ في جلب البيانات، تشغيل الوضع الثابت:', error);
-        applyLanguage();
+        console.error('خطأ في جلب البيانات:', error);
       }
+      applyLanguage();
     }
 
     function getLangData(obj, keyBase, lang) {
@@ -436,8 +179,7 @@
         document.getElementById('footer-year').textContent = siteData.year || '2026';
         const city = getLangData(siteData, 'city', lang);
         const region = getLangData(siteData, 'region', lang);
-        const postal = siteData.postalCode || '65800';
-        document.getElementById('footer-address').textContent = `${city}، ${region} ${postal}`;
+        document.getElementById('footer-address').textContent = `${city}، ${region} ${siteData.postalCode || '65800'}`;
       } else {
         if (isRTL) {
           document.getElementById('logo-text').textContent = "فيصل للعقار";
@@ -468,13 +210,11 @@
         }
       }
 
-      // عناوين الأقسام
       document.getElementById('properties-heading').textContent = isRTL ? 'أبرز العقارات' : 'Signature Residences';
       document.getElementById('properties-subtitle').textContent = isRTL ? 'مختارة بعناية للتميز' : 'Handpicked for Excellence';
       document.getElementById('testimonials-heading').textContent = isRTL ? 'آراء العملاء' : 'Esteemed Clientele';
       document.getElementById('testimonials-subtitle').textContent = isRTL ? 'أصوات من ذوي المكانة' : 'Voices of Distinction';
 
-      // ترجمة روابط Navbar و CTAs
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (key === 'home') el.textContent = isRTL ? 'الرئيسية' : 'Home';
@@ -497,22 +237,9 @@
       container.innerHTML = '';
 
       if (propertiesList.length === 0) {
-        // عقارات نموذجية تظهر فقط إذا لم توجد بيانات حقيقية
         const sampleProps = [
-          {
-            title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate",
-            location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center",
-            price_ar: "2,400,000 درهم", price_en: "2,400,000 MAD",
-            beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "320 sqm",
-            image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
-          },
-          {
-            title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa",
-            location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District",
-            price_ar: "3,100,000 درهم", price_en: "3,100,000 MAD",
-            beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "280 sqm",
-            image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
-          }
+          { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price_ar: "2,400,000 درهم", price_en: "2,400,000 MAD", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "320 sqm", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
+          { title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa", location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District", price_ar: "3,100,000 درهم", price_en: "3,100,000 MAD", beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "280 sqm", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" }
         ];
         sampleProps.forEach(p => appendCard(container, p, lang));
         return;
@@ -526,7 +253,7 @@
       card.className = 'property-card';
       card.innerHTML = `
         <img src="${p.image || 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80'}"
-             alt="${isAr ? (p.title_ar || '') : (p.title_en || '')}"
+             alt="${isAr ? (p.title_ar || p.title || '') : (p.title_en || p.title || '')}"
              class="property-image"
              onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80'">
         <div class="property-details">
@@ -538,7 +265,7 @@
             <span>🛁 ${p.baths || 0} ${isAr ? 'حمامات' : 'Baths'}</span>
             <span>📐 ${isAr ? (p.sqft_ar || p.sqft || '') : (p.sqft_en || p.sqft || '')}</span>
           </div>
-          <a href="#cta" class="btn-card" style="margin-top: 1rem; display: inline-block;">
+          <a href="#cta" class="btn-card" style="margin-top:1rem; display:inline-block;">
             ${isAr ? 'عرض العقار' : 'View Property'}
           </a>
         </div>
@@ -550,26 +277,20 @@
       const container = document.getElementById('testimonials-container');
       if (!container) return;
       container.innerHTML = '';
-
-      const sampleTestis = [
-        {
-          quote_ar: "تعامل احترافي للغاية ومصداقية تامة في المواعيد. المعاملة كانت ممتازة.",
-          quote_en: "Absolute transparency and elite service. Highly recommended for premium acquisitions.",
-          author_ar: "الحاج محمد بنعلي", author_en: "M. Benali",
-          role_ar: "مستثمر عقاري", role_en: "Property Investor"
-        }
-      ];
-
-      sampleTestis.forEach(t => {
-        const div = document.createElement('div');
-        div.className = 'testimonial-card';
-        div.innerHTML = `
-          <p class="testimonial-text">"${lang === 'ar' ? t.quote_ar : t.quote_en}"</p>
-          <div class="testimonial-author">${lang === 'ar' ? t.author_ar : t.author_en}</div>
-          <div class="testimonial-role">${lang === 'ar' ? t.role_ar : t.role_en}</div>
-        `;
-        container.appendChild(div);
-      });
+      const t = {
+        quote_ar: "تعامل احترافي للغاية ومصداقية تامة في المواعيد. المعاملة كانت ممتازة.",
+        quote_en: "Absolute transparency and elite service. Highly recommended for premium acquisitions.",
+        author_ar: "الحاج محمد بنعلي", author_en: "M. Benali",
+        role_ar: "مستثمر عقاري", role_en: "Property Investor"
+      };
+      const div = document.createElement('div');
+      div.className = 'testimonial-card';
+      div.innerHTML = `
+        <p class="testimonial-text">"${lang === 'ar' ? t.quote_ar : t.quote_en}"</p>
+        <div class="testimonial-author">${lang === 'ar' ? t.author_ar : t.author_en}</div>
+        <div class="testimonial-role">${lang === 'ar' ? t.role_ar : t.role_en}</div>
+      `;
+      container.appendChild(div);
     }
 
     fetchAllData();
