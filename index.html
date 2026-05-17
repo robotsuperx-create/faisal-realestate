@@ -10,7 +10,6 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    /* تأكد من وجود تنسيقات style.css الأساسية، وإضافة تحسينات RTL/LTR */
     body {
       background-color: #050505;
       color: #ffffff;
@@ -39,6 +38,9 @@
       background: #D4AF37;
       color: #050505;
     }
+    .gold-highlight {
+      color: #D4AF37;
+    }
   </style>
 </head>
 <body>
@@ -56,19 +58,19 @@
 
   <header class="hero">
     <div class="hero-content">
-      <h1 class="hero-title" id="hero-title"></h1>
-      <p class="hero-subtitle" id="hero-subtitle"></p>
+      <h1 class="hero-title" id="hero-title">فيصل للعقار</h1>
+      <p class="hero-subtitle" id="hero-subtitle">اكتشف الفخامة الحقيقية</p>
       <div class="hero-cta">
-        <a href="#" class="btn-gold" id="cta-primary"></a>
-        <a href="#" class="btn-outline-gold" id="cta-secondary"></a>
+        <a href="#" class="btn-gold" id="cta-primary">استكشف المجموعة</a>
+        <a href="#" class="btn-outline-gold" id="cta-secondary">جولة افتراضية</a>
       </div>
     </div>
   </header>
 
   <section class="section-padding">
-    <h2 class="section-title" id="properties-heading"></h2>
+    <h2 class="section-title" id="properties-heading">أبرز العقارات</h2>
     <div class="gold-underline"></div>
-    <p class="section-subtitle" id="properties-subtitle"></p>
+    <p class="section-subtitle" id="properties-subtitle">مختارة بعناية للتميز</p>
     <div class="property-grid" id="property-container"></div>
   </section>
 
@@ -76,8 +78,8 @@
     <div class="about-container">
       <div class="about-image"></div>
       <div class="about-text">
-        <h2 id="about-title"></h2>
-        <p id="about-snippet"></p>
+        <h2 id="about-title">إرث من <span class="gold-highlight">التميز</span></h2>
+        <p id="about-snippet">فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية والتجارية.</p>
         <a href="#" class="btn-gold about-btn" data-i18n="discover-story">اكتشف قصتنا</a>
       </div>
     </div>
@@ -85,29 +87,29 @@
 
   <section class="section-padding" style="background: #0a0a0a; border-top: 1px solid #D4AF37; border-bottom: 1px solid #D4AF37;">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;"></h2>
-      <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;"></p>
+      <h2 class="gold-highlight" id="security-title" style="font-size: 2rem;">أمان وموثوقية تعاملاتكم</h2>
+      <p id="security-text" style="color: #ccc; margin-top: 1.5rem; font-size: 1.1rem;">نحن نضمن السرية التامة والاحترافية الكاملة في كافة مراحل بيع وشراء العقارات الفاخرة.</p>
     </div>
   </section>
 
   <section class="section-padding" style="background: rgba(212, 175, 55, 0.02);">
-    <h2 class="section-title" id="testimonials-heading"></h2>
+    <h2 class="section-title" id="testimonials-heading">آراء العملاء</h2>
     <div class="gold-underline"></div>
-    <p class="section-subtitle" id="testimonials-subtitle"></p>
+    <p class="section-subtitle" id="testimonials-subtitle">أصوات من ذوي المكانة</p>
     <div class="testimonial-grid" id="testimonials-container"></div>
   </section>
 
   <div class="cta-banner">
-    <h2 id="cta-title"></h2>
-    <p id="cta-subtitle"></p>
+    <h2 id="cta-title">هل أنت جاهز للخطوة القادمة؟</h2>
+    <p id="cta-subtitle">تواصل مع مستشارينا العقاريين اليوم</p>
     <a href="#" class="btn-gold cta-btn" data-i18n="enquire-now">استفسر الآن</a>
   </div>
 
   <footer class="luxury-footer">
     <div class="footer-content">
-      <div class="footer-logo" id="footer-name"></div>
-      <p class="copyright" id="footer-address"></p>
-      <p class="copyright">©️ <span id="footer-year"></span> جميع الحقوق محفوظة.</p>
+      <div class="footer-logo" id="footer-name">فيصل للعقار</div>
+      <p class="copyright" id="footer-address">تاوريرت، الجهة الشرقية</p>
+      <p class="copyright">©️ <span id="footer-year">2026</span> جميع الحقوق محفوظة.</p>
     </div>
   </footer>
 
@@ -159,7 +161,8 @@
         applyLanguage();
       } catch (error) {
         console.error('خطأ في جلب البيانات:', error);
-        document.getElementById('hero-title').innerHTML = 'فيصل للعقار';
+        // في حال فشل الـ fetch (على السيرفر المحلي بدون داتا)، سيعرض المحتوى الثابت الافتراضي
+        renderProperties(currentLang); 
       }
     }
 
@@ -175,7 +178,10 @@
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
       document.getElementById('lang-toggle').textContent = isRTL ? 'EN' : 'عربي';
 
-      if (!siteData) return;
+      if (!siteData) {
+        renderProperties(lang);
+        return;
+      }
 
       document.title = getLangData(siteData, 'siteName', lang) + ' | Luxury Real Estate';
       document.getElementById('logo-text').textContent = getLangData(siteData, 'siteName', lang);
@@ -205,7 +211,7 @@
       document.querySelector('.cta-btn').textContent = lang === 'ar' ? 'استفسر الآن' : 'Enquire Now';
 
       document.getElementById('footer-name').textContent = getLangData(siteData, 'siteName', lang);
-      document.getElementById('footer-year').textContent = siteData.year || '2025';
+      document.getElementById('footer-year').textContent = siteData.year || '2026';
       const city = getLangData(siteData, 'city', lang);
       const region = getLangData(siteData, 'region', lang);
       const postal = siteData.postalCode || '65800';
@@ -217,38 +223,59 @@
         else if (key === 'portfolio') el.textContent = lang === 'ar' ? 'المجموعة' : 'Portfolio';
         else if (key === 'about') el.textContent = lang === 'ar' ? 'من نحن' : 'About';
         else if (key === 'contact') el.textContent = lang === 'ar' ? 'اتصل بنا' : 'Contact';
-        else if (key === 'discover-story') el.textContent = lang === 'ar' ? 'اكتشف قصتنا' : 'Discover Our Story';
-        else if (key === 'enquire-now') el.textContent = lang === 'ar' ? 'استفسر الآن' : 'Enquire Now';
       });
     }
 
     function renderProperties(lang) {
       const container = document.getElementById('property-container');
+      if (!container) return;
       container.innerHTML = '';
+
+      // إذا كانت المصفوفة فارغة (لم يتم رفع الملفات بعد)، يعرض العقارات الافتراضية بشكلها الفاخر
+      if (propertiesList.length === 0) {
+        const dummyProps = [
+          { title_ar: "فيلا رويال", title_en: "Serenity Villa", location_ar: "تاوريرت، الجهة الشرقية", location_en: "Beverly Hills, CA", price: "2,500,000 درهم", beds: 5, baths: 4, sqft_ar: "350 م²", sqft_en: "7,200 sqft", image: "/assets/images/placeholder.jpg" },
+          { title_ar: "ذا هورايزون", title_en: "The Horizon Estate", location_ar: "ناظور", location_en: "Dubai Marina", price: "18,200,000 درهم", beds: 6, baths: 5, sqft_ar: "500 م²", sqft_en: "9,500 sqft", image: "/assets/images/placeholder.jpg" }
+        ];
+        
+        dummyProps.forEach(p => {
+          appendCard(container, p, lang);
+        });
+        return;
+      }
+
       propertiesList.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'property-card';
-        card.innerHTML = `
-          <img src="${p.image || '/assets/images/placeholder.jpg'}" alt="${getLangData(p, 'title', lang)}" class="property-image">
-          <div class="property-details">
-            <h3>${getLangData(p, 'title', lang)}</h3>
-            <div class="property-location">📍 ${getLangData(p, 'location', lang)}</div>
-            <div class="property-price">${p.price || ''}</div>
-            <div class="property-specs">
-              <span>🛏 ${p.beds || 0} ${lang === 'ar' ? 'غرف' : 'Beds'}</span>
-              <span>🛁 ${p.baths || 0} ${lang === 'ar' ? 'حمامات' : 'Baths'}</span>
-              <span>📐 ${getLangData(p, 'sqft', lang)}</span>
-            </div>
-            <a href="#" class="btn-card">${lang === 'ar' ? 'عرض العقار' : 'View Property'}</a>
-          </div>
-        `;
-        container.appendChild(card);
+        appendCard(container, p, lang);
       });
+    }
+
+    function appendCard(container, p, lang) {
+      const card = document.createElement('div');
+      card.className = 'property-card';
+      card.innerHTML = `
+        <img src="${p.image || '/assets/images/placeholder.jpg'}" alt="${getLangData(p, 'title', lang)}" class="property-image">
+        <div class="property-details">
+          <h3>${getLangData(p, 'title', lang)}</h3>
+          <div class="property-location">📍 ${getLangData(p, 'location', lang)}</div>
+          <div class="property-price">${p.price || ''}</div>
+          <div class="property-specs">
+            <span>🛏 ${p.beds || 0} ${lang === 'ar' ? 'غرف' : 'Beds'}</span>
+            <span>🛁 ${p.baths || 0} ${lang === 'ar' ? 'حمامات' : 'Baths'}</span>
+            <span>📐 ${getLangData(p, 'sqft', lang)}</span>
+          </div>
+          <a href="#" class="btn-card">${lang === 'ar' ? 'عرض العقار' : 'View Property'}</a>
+        </div>
+      `;
+      container.appendChild(card);
     }
 
     function renderTestimonials(lang) {
       const container = document.getElementById('testimonials-container');
+      if (!container) return;
       container.innerHTML = '';
+      
+      if (testimonialsList.length === 0) return;
+
       testimonialsList.forEach(t => {
         const div = document.createElement('div');
         div.className = 'testimonial-card';
