@@ -2,59 +2,63 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "settings"
-    label: "Site Settings"
+    label: "إعدادات الموقع (Site Settings)"
+    delete: false
+    editor:
+      preview: false
     files:
-      - label: "General"
-        name: "general"
+      - name: "general"
+        label: "الإعدادات العامة"
         file: "content/settings.json"
         fields:
-          - { label: "Site Name", name: "siteName", widget: "string", default: "فيصل للعقار | Faisal Properties" }
-          - { label: "Hero Title (Arabic)", name: "heroTitle_ar", widget: "string", default: "اكتشف <span class='gold-highlight'>الفخامة</span> الملكية في تاوريرت" }
-          - { label: "Hero Title (English)", name: "heroTitle_en", widget: "string", default: "Discover <span class='gold-highlight'>Royal</span> Living in Taourirt" }
-          - { label: "Hero Subtitle (Arabic)", name: "heroSubtitle_ar", widget: "text", default: "عقارات حصرية للنخبة المميزة. اختبر قمة الفخامة مع فيصل للعقار." }
-          - { label: "Hero Subtitle (English)", name: "heroSubtitle_en", widget: "text", default: "Exclusive properties curated for the discerning elite. Experience the pinnacle of luxury with Faisal Properties." }
-          - { label: "CTA Primary (Arabic)", name: "ctaPrimary_ar", widget: "string", default: "استكشف المجموعة" }
-          - { label: "CTA Primary (English)", name: "ctaPrimary_en", widget: "string", default: "Explore Collection" }
-          - { label: "CTA Secondary (Arabic)", name: "ctaSecondary_ar", widget: "string", default: "جولة افتراضية" }
-          - { label: "CTA Secondary (English)", name: "ctaSecondary_en", widget: "string", default: "Virtual Tour" }
-          - { label: "About Snippet (Arabic)", name: "aboutSnippet_ar", widget: "text", default: "فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية في تاوريرت والجهة الشرقية بلمسة من الفخامة العصرية." }
-          - { label: "About Snippet (English)", name: "aboutSnippet_en", widget: "text", default: "Faisal Properties is not just a brand — it's a statement of refined taste. We offer the finest addresses in Taourirt and the Oriental region with a touch of modern luxury." }
-          - { label: "Security Section Title (Arabic)", name: "securityTitle_ar", widget: "string", default: "أمان وشفافية المعاملات" }
-          - { label: "Security Section Title (English)", name: "securityTitle_en", widget: "string", default: "Transaction Security & Transparency" }
-          - { label: "Security Text (Arabic)", name: "securityText_ar", widget: "text", default: "نحن نضمن سلامتك: جميع عمليات الدفع واستلام المفاتيح تتم يدوياً باليد وبحضور الأطراف الثلاثة حصراً: الوسيط العقاري فيصل، صاحب الملكية، والزبون. لا تُرسل أموال عبر الإنترنت أو لأطراف غير معروفة." }
-          - { label: "Security Text (English)", name: "securityText_en", widget: "text", default: "Your safety is our priority: All payment and key handover processes are conducted in person, exclusively in the presence of the three parties: real estate agent Faisal, the property owner, and the client. No money transfers are made online or to unknown parties." }
-          - { label: "CTA Banner Title (Arabic)", name: "ctaTitle_ar", widget: "string", default: "ابدأ إرثك العقاري" }
-          - { label: "CTA Banner Title (English)", name: "ctaTitle_en", widget: "string", default: "Begin Your Legacy" }
-          - { label: "CTA Banner Subtitle (Arabic)", name: "ctaSubtitle_ar", widget: "text", default: "احجز استشارة خاصة واستكشف أرقى العقارات في تاوريرت." }
-          - { label: "CTA Banner Subtitle (English)", name: "ctaSubtitle_en", widget: "text", default: "Schedule a private consultation and explore the finest properties in Taourirt." }
-          - { label: "Footer Year", name: "year", widget: "number", default: 2026 }
-          - { label: "City (Arabic)", name: "city_ar", widget: "string", default: "تاوريرت" }
-          - { label: "City (English)", name: "city_en", widget: "string", default: "Taourirt" }
-          - { label: "Region (Arabic)", name: "region_ar", widget: "string", default: "الجهة الشرقية" }
-          - { label: "Region (English)", name: "region_en", widget: "string", default: "Oriental" }
-          - { label: "Postal Code", name: "postalCode", widget: "string", default: "65800" }
+          - { label: "اسم الموقع بالعربية", name: "siteName_ar", widget: "string" }
+          - { label: "اسم الموقع بالإنجليزية", name: "siteName_en", widget: "string" }
+          
+          - { label: "العنوان الفرعي للرئيسية بالعربية", name: "heroSubtitle_ar", widget: "string" }
+          - { label: "العنوان الفرعي للرئيسية بالإنجليزية", name: "heroSubtitle_en", widget: "string" }
+          
+          - { label: "عن الشركة بالعربية", name: "aboutSnippet_ar", widget: "text" }
+          - { label: "عن الشركة بالإنجليزية", name: "aboutSnippet_en", widget: "text" }
+          
+          - { label: "عنوان قسم الأمان بالعربية", name: "securityTitle_ar", widget: "string" }
+          - { label: "عنوان قسم الأمان بالإنجليزية", name: "securityTitle_en", widget: "string" }
+          - { label: "نص قسم الأمان بالعربية", name: "securityText_ar", widget: "text" }
+          - { label: "نص قسم الأمان بالإنجليزية", name: "securityText_en", widget: "text" }
+          
+          - { label: "عنوان نموذج الاتصال بالعربية", name: "ctaTitle_ar", widget: "string" }
+          - { label: "عنوان نموذج الاتصال بالإنجليزية", name: "ctaTitle_en", widget: "string" }
+          - { label: "العنوان الفرعي للاتصال بالعربية", name: "ctaSubtitle_ar", widget: "string" }
+          - { label: "العنوان الفرعي للاتصال بالإنجليزية", name: "ctaSubtitle_en", widget: "string" }
+          
+          - { label: "المدينة بالعربية", name: "city_ar", widget: "string", default: "تاوريرت" }
+          - { label: "المدينة بالإنجليزية", name: "city_en", widget: "string", default: "Taourirt" }
+          - { label: "الجهة بالعربية", name: "region_ar", widget: "string", default: "الجهة الشرقية" }
+          - { label: "الجهة بالإنجليزية", name: "region_en", widget: "string", default: "Oriental Region" }
+          - { label: "الرمز البريدي", name: "postalCode", widget: "string", default: "65800" }
+          - { label: "السنة", name: "year", widget: "string", default: "2026" }
 
   - name: "properties"
-    label: "Properties"
+    label: "العقارات (Properties)"
     folder: "content/properties"
     create: true
     slug: "{{slug}}"
-    extension: "json"
+    editor:
+      preview: false
     fields:
-      - { label: "Title (Arabic)", name: "title_ar", widget: "string" }
-      - { label: "Title (English)", name: "title_en", widget: "string" }
-      - { label: "Location (Arabic)", name: "location_ar", widget: "string" }
-      - { label: "Location (English)", name: "location_en", widget: "string" }
-      - { label: "Price", name: "price", widget: "string" }
-      - { label: "Beds", name: "beds", widget: "number" }
-      - { label: "Baths", name: "baths", widget: "number" }
-      - { label: "Sqft (Arabic)", name: "sqft_ar", widget: "string" }
-      - { label: "Sqft (English)", name: "sqft_en", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description (Arabic)", name: "description_ar", widget: "markdown", required: false }
-      - { label: "Description (English)", name: "description_en", widget: "markdown", required: false }
+      - { label: "المعرف الفرعي (Slug - اسم الملف بالإنجليزية بدون مساحات)", name: "title", widget: "string" }
+      - { label: "عنوان العقار بالعربية", name: "title_ar", widget: "string" }
+      - { label: "عنوان العقار بالإنجليزية", name: "title_en", widget: "string" }
+      - { label: "الموقع بالعربية", name: "location_ar", widget: "string" }
+      - { label: "الموقع بالإنجليزية", name: "location_en", widget: "string" }
+      - { label: "السعر بالعربية (مثال: 2,500,000 درهم)", name: "price_ar", widget: "string" }
+      - { label: "السعر بالإنجليزية (مثال: 2,500,000 MAD)", name: "price_en", widget: "string" }
+      - { label: "عدد الغرف", name: "beds", widget: "number" }
+      - { label: "عدد الحمامات", name: "baths", widget: "number" }
+      - { label: "المساحة بالعربية (مثال: 350 م²)", name: "sqft_ar", widget: "string" }
+      - { label: "المساحة بالإنجليزية (مثال: 350 sqm)", name: "sqft_en", widget: "string" }
+      - { label: "صورة العقار (رابط أو رفع)", name: "image", widget: "image" }
