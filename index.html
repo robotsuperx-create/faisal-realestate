@@ -382,14 +382,16 @@
 
     async function fetchAllData() {
       try {
-        const [settingsRes, propsListRes] = await Promise.all([
-          fetch('/content/settings.json'),
-          fetch('/content/properties/list.json')
-        ]);
-        siteData = await settingsRes.json();
-        const propSlugs = await propsListRes.json();
+        // جلب ملف الإعدادات العامة فقط وتفادي طلب ملف list.json المفقود
+        const settingsRes = await fetch('/content/settings.json');
+        if (settingsRes.ok) {
+          siteData = await settingsRes.json();
+        }
 
+        // جلب العقار المضاف من اللوحة مباشرة (a1)
+        const propSlugs = ['a1'];
         propertiesList = [];
+        
         for (let slug of propSlugs) {
           try {
             const res = await fetch(`/content/properties/${slug}.json`);
@@ -496,6 +498,7 @@
       container.innerHTML = '';
 
       if (propertiesList.length === 0) {
+        // تم استبدال الروابط المكسورة بروابط صور حية متناسقة وجمالية لمنع أخطاء الـ 404
         const sampleProps = [
           { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price_ar: "2,400,000 درهم", price_en: "2,400,000 MAD", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "320 sqm", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
           { title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa", location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District", price_ar: "3,100,000 درهم", price_en: "3,100,000 MAD", beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "280 sqm", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" }
