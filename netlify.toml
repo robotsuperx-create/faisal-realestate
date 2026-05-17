@@ -1,8 +1,6 @@
 [build]
-  functions = "netlify/functions"
-  command = "echo 'Building...'"
+  command = "node build-list.js"
+  publish = "."
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[build.environment]
+  NODE_VERSION = "18"
