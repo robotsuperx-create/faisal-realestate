@@ -59,7 +59,7 @@
   <header class="hero">
     <div class="hero-content">
       <h1 class="hero-title" id="hero-title">فيصل للعقار</h1>
-      <p class="hero-subtitle" id="hero-subtitle">اكتشف الفخامة الحقيقية</p>
+      <p class="hero-subtitle" id="hero-subtitle">اكتشف الفخامة الحقيقية في تاوريرت</p>
       <div class="hero-cta">
         <a href="#" class="btn-gold" id="cta-primary">استكشف المجموعة</a>
         <a href="#" class="btn-outline-gold" id="cta-secondary">جولة افتراضية</a>
@@ -79,7 +79,7 @@
       <div class="about-image"></div>
       <div class="about-text">
         <h2 id="about-title">إرث من <span class="gold-highlight">التميز</span></h2>
-        <p id="about-snippet">فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية والتجارية.</p>
+        <p id="about-snippet">فيصل للعقار ليست مجرد علامة - إنها بيان للذوق الرفيع. نقدم أفضل العناوين السكنية والتجارية في المنطقة الشرقية.</p>
         <a href="#" class="btn-gold about-btn" data-i18n="discover-story">اكتشف قصتنا</a>
       </div>
     </div>
@@ -160,15 +160,14 @@
 
         applyLanguage();
       } catch (error) {
-        console.error('خطأ في جلب البيانات:', error);
-        // في حال فشل الـ fetch (على السيرفر المحلي بدون داتا)، سيعرض المحتوى الثابت الافتراضي
-        renderProperties(currentLang); 
+        console.error('خطأ في جلب البيانات، سيتم عرض البنية الأساسية:', error);
+        applyLanguage();
       }
     }
 
     function getLangData(obj, keyBase, lang) {
       const langKey = `${keyBase}_${lang}`;
-      return obj[langKey] !== undefined ? obj[langKey] : obj[keyBase] || '';
+      return obj && obj[langKey] !== undefined ? obj[langKey] : (obj ? obj[keyBase] : '') || '';
     }
 
     function applyLanguage() {
@@ -178,44 +177,44 @@
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
       document.getElementById('lang-toggle').textContent = isRTL ? 'EN' : 'عربي';
 
-      if (!siteData) {
-        renderProperties(lang);
-        return;
+      // إذا نجح جلب البيانات من الـ CMS نقوم بتطبيقها، وإلا نترك النصوص الافتراضية الفاخرة تعمل
+      if (siteData) {
+        document.title = getLangData(siteData, 'siteName', lang) + ' | Luxury Real Estate';
+        document.getElementById('logo-text').textContent = getLangData(siteData, 'siteName', lang);
+        document.getElementById('hero-title').innerHTML = getLangData(siteData, 'heroTitle', lang);
+        document.getElementById('hero-subtitle').textContent = getLangData(siteData, 'heroSubtitle', lang);
+        document.getElementById('cta-primary').textContent = getLangData(siteData, 'ctaPrimary', lang);
+        document.getElementById('cta-secondary').textContent = getLangData(siteData, 'ctaSecondary', lang);
+        document.getElementById('about-snippet').textContent = getLangData(siteData, 'aboutSnippet', lang);
+        document.getElementById('security-title').textContent = getLangData(siteData, 'securityTitle', lang);
+        document.getElementById('security-text').textContent = getLangData(siteData, 'securityText', lang);
+        document.getElementById('cta-title').textContent = getLangData(siteData, 'ctaTitle', lang);
+        document.getElementById('cta-subtitle').textContent = getLangData(siteData, 'ctaSubtitle', lang);
+        document.getElementById('footer-name').textContent = getLangData(siteData, 'siteName', lang);
+        document.getElementById('footer-year').textContent = siteData.year || '2026';
+        const city = getLangData(siteData, 'city', lang);
+        const region = getLangData(siteData, 'region', lang);
+        const postal = siteData.postalCode || '65800';
+        document.getElementById('footer-address').textContent = `${city}، ${region} ${postal}`;
+      } else {
+        // نصوص ثابتة احترافية في حال عدم وجود داتا json بعد
+        if (isRTL) {
+          document.getElementById('logo-text').textContent = "فيصل للعقار";
+          document.getElementById('hero-title').textContent = "فيصل للعقار";
+          document.getElementById('hero-subtitle').textContent = "اكتشف الفخامة الحقيقية في تاوريرت";
+          document.getElementById('footer-name').textContent = "فيصل للعقار";
+        } else {
+          document.getElementById('logo-text').textContent = "FAISAL PROPERTIES";
+          document.getElementById('hero-title').textContent = "Exclusive Royal Residences";
+          document.getElementById('hero-subtitle').textContent = "Curated luxury properties in Taourirt and the Oriental region.";
+          document.getElementById('footer-name').textContent = "FAISAL PROPERTIES";
+        }
       }
-
-      document.title = getLangData(siteData, 'siteName', lang) + ' | Luxury Real Estate';
-      document.getElementById('logo-text').textContent = getLangData(siteData, 'siteName', lang);
-
-      document.getElementById('hero-title').innerHTML = getLangData(siteData, 'heroTitle', lang);
-      document.getElementById('hero-subtitle').textContent = getLangData(siteData, 'heroSubtitle', lang);
-      document.getElementById('cta-primary').textContent = getLangData(siteData, 'ctaPrimary', lang);
-      document.getElementById('cta-secondary').textContent = getLangData(siteData, 'ctaSecondary', lang);
 
       document.getElementById('properties-heading').textContent = lang === 'ar' ? 'أبرز العقارات' : 'Signature Residences';
       document.getElementById('properties-subtitle').textContent = lang === 'ar' ? 'مختارة بعناية للتميز' : 'Handpicked for Excellence';
-      renderProperties(lang);
-
-      document.getElementById('about-title').innerHTML = lang === 'ar' ? 'إرث من <span class="gold-highlight">التميز</span>' : 'Legacy of <span class="gold-highlight">Distinction</span>';
-      document.getElementById('about-snippet').textContent = getLangData(siteData, 'aboutSnippet', lang);
-      document.querySelector('.about-btn').textContent = lang === 'ar' ? 'اكتشف قصتنا' : 'Discover Our Story';
-
-      document.getElementById('security-title').textContent = getLangData(siteData, 'securityTitle', lang);
-      document.getElementById('security-text').textContent = getLangData(siteData, 'securityText', lang);
-
       document.getElementById('testimonials-heading').textContent = lang === 'ar' ? 'آراء العملاء' : 'Esteemed Clientele';
       document.getElementById('testimonials-subtitle').textContent = lang === 'ar' ? 'أصوات من ذوي المكانة' : 'Voices of Distinction';
-      renderTestimonials(lang);
-
-      document.getElementById('cta-title').textContent = getLangData(siteData, 'ctaTitle', lang);
-      document.getElementById('cta-subtitle').textContent = getLangData(siteData, 'ctaSubtitle', lang);
-      document.querySelector('.cta-btn').textContent = lang === 'ar' ? 'استفسر الآن' : 'Enquire Now';
-
-      document.getElementById('footer-name').textContent = getLangData(siteData, 'siteName', lang);
-      document.getElementById('footer-year').textContent = siteData.year || '2026';
-      const city = getLangData(siteData, 'city', lang);
-      const region = getLangData(siteData, 'region', lang);
-      const postal = siteData.postalCode || '65800';
-      document.getElementById('footer-address').textContent = `${city}، ${region} ${postal}`;
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -223,7 +222,12 @@
         else if (key === 'portfolio') el.textContent = lang === 'ar' ? 'المجموعة' : 'Portfolio';
         else if (key === 'about') el.textContent = lang === 'ar' ? 'من نحن' : 'About';
         else if (key === 'contact') el.textContent = lang === 'ar' ? 'اتصل بنا' : 'Contact';
+        else if (key === 'discover-story') el.textContent = lang === 'ar' ? 'اكتشف قصتنا' : 'Discover Our Story';
+        else if (key === 'enquire-now') el.textContent = lang === 'ar' ? 'استفسر الآن' : 'Enquire Now';
       });
+
+      renderProperties(lang);
+      renderTestimonials(lang);
     }
 
     function renderProperties(lang) {
@@ -231,39 +235,34 @@
       if (!container) return;
       container.innerHTML = '';
 
-      // إذا كانت المصفوفة فارغة (لم يتم رفع الملفات بعد)، يعرض العقارات الافتراضية بشكلها الفاخر
+      // إذا كانت اللوحة فارغة ولم ترفع عقارات بعد، يعرض نماذج فاخرة تلقائياً لمنع ظهور الصفحة فارغة أمام العميل
       if (propertiesList.length === 0) {
-        const dummyProps = [
-          { title_ar: "فيلا رويال", title_en: "Serenity Villa", location_ar: "تاوريرت، الجهة الشرقية", location_en: "Beverly Hills, CA", price: "2,500,000 درهم", beds: 5, baths: 4, sqft_ar: "350 م²", sqft_en: "7,200 sqft", image: "/assets/images/placeholder.jpg" },
-          { title_ar: "ذا هورايزون", title_en: "The Horizon Estate", location_ar: "ناظور", location_en: "Dubai Marina", price: "18,200,000 درهم", beds: 6, baths: 5, sqft_ar: "500 م²", sqft_en: "9,500 sqft", image: "/assets/images/placeholder.jpg" }
+        const sampleProps = [
+          { title_ar: "إقامة الشرف الفاخرة", title_en: "The Sharaf Luxury Estate", location_ar: "تاوريرت، وسط المدينة", location_en: "Taourirt, City Center", price: "2,400,000 درهم", beds: 5, baths: 4, sqft_ar: "320 م²", sqft_en: "3,440 sqft", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" },
+          { title_ar: "فيلا النخيل العصرية", title_en: "Modern Palms Villa", location_ar: "تاوريرت، الحي الراقي", location_en: "Taourirt, Premium District", price: "3,100,000 درهم", beds: 4, baths: 3, sqft_ar: "280 م²", sqft_en: "3,010 sqft", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" }
         ];
-        
-        dummyProps.forEach(p => {
-          appendCard(container, p, lang);
-        });
+        sampleProps.forEach(p => appendCard(container, p, lang));
         return;
       }
 
-      propertiesList.forEach(p => {
-        appendCard(container, p, lang);
-      });
+      propertiesList.forEach(p => appendCard(container, p, lang));
     }
 
     function appendCard(container, p, lang) {
       const card = document.createElement('div');
       card.className = 'property-card';
       card.innerHTML = `
-        <img src="${p.image || '/assets/images/placeholder.jpg'}" alt="${getLangData(p, 'title', lang)}" class="property-image">
+        <img src="${p.image || 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80'}" alt="${getLangData(p, 'title', lang)}" class="property-image">
         <div class="property-details">
-          <h3>${getLangData(p, 'title', lang)}</h3>
-          <div class="property-location">📍 ${getLangData(p, 'location', lang)}</div>
-          <div class="property-price">${p.price || ''}</div>
+          <h3>${getLangData(p, 'title', lang) || (lang === 'ar' ? p.title_ar : p.title_en)}</h3>
+          <div class="property-location">📍 ${getLangData(p, 'location', lang) || (lang === 'ar' ? p.location_ar : p.location_en)}</div>
+          <div class="property-price" style="color: #D4AF37; font-weight: bold; margin: 0.5rem 0;">${p.price || ''}</div>
           <div class="property-specs">
             <span>🛏 ${p.beds || 0} ${lang === 'ar' ? 'غرف' : 'Beds'}</span>
             <span>🛁 ${p.baths || 0} ${lang === 'ar' ? 'حمامات' : 'Baths'}</span>
-            <span>📐 ${getLangData(p, 'sqft', lang)}</span>
+            <span>📐 ${getLangData(p, 'sqft', lang) || (lang === 'ar' ? p.sqft_ar : p.sqft_en)}</span>
           </div>
-          <a href="#" class="btn-card">${lang === 'ar' ? 'عرض العقار' : 'View Property'}</a>
+          <a href="#" class="btn-card" style="margin-top: 1rem; display: inline-block;">${lang === 'ar' ? 'عرض العقار' : 'View Property'}</a>
         </div>
       `;
       container.appendChild(card);
@@ -273,8 +272,23 @@
       const container = document.getElementById('testimonials-container');
       if (!container) return;
       container.innerHTML = '';
-      
-      if (testimonialsList.length === 0) return;
+
+      if (testimonialsList.length === 0) {
+        const sampleTestis = [
+          { quote_ar: "تعامل احترافي للغاية ومصداقية تامة في المواعيد المعاملة كانت ممتازة.", quote_en: "Absolute transparency and elite service. Highly recommended for premium acquisitions.", author_ar: "الحاج محمد بنعلي", author_en: "M. Benali", role_ar: "مستثمر عقاري", role_en: "Property Investor" }
+        ];
+        sampleTestis.forEach(t => {
+          const div = document.createElement('div');
+          div.className = 'testimonial-card';
+          div.innerHTML = `
+            <p class="testimonial-text">“${lang === 'ar' ? t.quote_ar : t.quote_en}”</p>
+            <div class="testimonial-author">${lang === 'ar' ? t.author_ar : t.author_en}</div>
+            <div class="testimonial-role">${lang === 'ar' ? t.role_ar : t.role_en}</div>
+          `;
+          container.appendChild(div);
+        });
+        return;
+      }
 
       testimonialsList.forEach(t => {
         const div = document.createElement('div');
